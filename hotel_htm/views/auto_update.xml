@@ -1,0 +1,27 @@
+<odoo>
+
+    <record id="update_transaction_status_cron" model="ir.cron">
+        <field name="name">Auto Update Transaction Status</field>
+        <field name="model_id" ref="hotel_htm.model_transaksi_hotel"/>
+        <field name="state">code</field>
+        <field name="code">model.auto_update_transaction_status()</field>
+        <field name="user_id" ref="base.user_root"/>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+        <field name="doall" eval="True"/>
+    </record>
+
+    <record id="update_kamar_status_cron" model="ir.cron">
+        <field name="name">Auto Update Kamar Status</field>
+        <field name="model_id" ref="hotel_htm.model_kamar_hotel"/>
+        <field name="state">code</field>
+        <field name="code">model.update_room_status()</field>
+        <field name="user_id" ref="base.user_root"/>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+        <field name="doall" eval="True"/>
+    </record>
+
+</odoo>

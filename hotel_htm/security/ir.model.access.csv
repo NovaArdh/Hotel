@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_fasilitas_hotel_user,undefined.fasilitas.hotel,model_fasilitas_hotel,base.group_user,1,1,1,1
+access_kamar_hotel_user,undefined.kamar.hotel,model_kamar_hotel,base.group_user,1,1,1,1
+access_transaksi_hotel_user,undefined.transaksi.hotel,model_transaksi_hotel,base.group_user,1,1,1,1

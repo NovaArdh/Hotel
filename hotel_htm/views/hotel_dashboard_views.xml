@@ -1,0 +1,70 @@
+<odoo>
+    <data>
+
+        <record id="view_transaksi_hotel_kanban" model="ir.ui.view">
+            <field name="name">transaksi.hotel.kanban</field>
+            <field name="model">transaksi.hotel</field>
+            <field name="arch" type="xml">
+                <kanban>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div class="oe_kanban_global_click">
+                                <div>
+                                    <strong>Status: </strong>
+                                    <field name="state"/>
+                                </div>
+                                <div>
+                                    <strong>Member: </strong>
+                                    <field name="partner_id"/>
+                                </div>
+                                <div>
+                                    <strong>Start Date: </strong>
+                                    <field name="start_date"/>
+                                </div>
+                                <div>
+                                    <strong>End Date: </strong>
+                                    <field name="end_date"/>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <record id="view_transaksi_hotel_graph" model="ir.ui.view">
+            <field name="name">transaksi.hotel.graph</field>
+            <field name="model">transaksi.hotel</field>
+            <field name="arch" type="xml">
+                <graph string="Transactions">
+                    <field name="start_date" type="row"/>
+                    <field name="state" type="measure"/>
+                </graph>
+            </field>
+        </record>
+
+        <record id="view_transaksi_hotel_pivot" model="ir.ui.view">
+            <field name="name">transaksi.hotel.pivot</field>
+            <field name="model">transaksi.hotel</field>
+            <field name="arch" type="xml">
+                <pivot string="Transaction Analysis">
+                    <field name="state" type="row"/>
+                    <field name="partner_id" type="row"/>
+                    <field name="duration" type="measure"/>
+                    <!-- <field name="price_total" type="measure"/> -->
+                </pivot>
+            </field>
+        </record>
+
+        <menuitem id="menu_hotel_dashboard" name="Hotel Dashboard" sequence="1" parent="hotel_menu"/>
+
+        <record id="action_hotel_dashboard" model="ir.actions.act_window">
+            <field name="name">Hotel Dashboard</field>
+            <field name="res_model">transaksi.hotel</field>
+            <field name="view_mode">graph,kanban,pivot</field>
+            <field name="target">current</field>
+        </record>
+
+        <menuitem id="menu_hotel_dashboard_action" parent="menu_hotel_dashboard" action="action_hotel_dashboard" sequence="1"/>
+    </data>
+</odoo>

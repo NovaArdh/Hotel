@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data>
+    
+        <record id="view_hotel_facility_tree" model="ir.ui.view">
+            <field name="name">fasilitas.hotel.tree</field>
+            <field name="model">fasilitas.hotel</field>
+            <field name="arch" type="xml">
+                <tree string="Fasilitas Hotel">
+                    <field name="name" />
+                    <field name="code" />
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_hotel_facility_form" model="ir.ui.view">
+            <field name="name">fasilitas.hotel.form</field>
+            <field name="model">fasilitas.hotel</field>
+            <field name="arch" type="xml">
+                <form string="Fasilitas Hotel">
+                    <group>
+                        <field name="name" />
+                        <field name="code" />
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <record id="fasilitas_hotel_action" model="ir.actions.act_window">
+            <field name="name">Fasilitas Hotel</field>
+            <field name="res_model">fasilitas.hotel</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="fasilitas_hotel_menu" name="Fasilitas Hotel" action="fasilitas_hotel_action" parent="hotel_sub_menu" />
+    
+    </data>
+    
+
+</odoo>

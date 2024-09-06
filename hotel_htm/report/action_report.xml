@@ -1,0 +1,13 @@
+<odoo>
+
+    <report
+        id="action_report_hotel_transaction_invoice"
+        model="transaksi.hotel"
+        string="Transaction Invoice"
+        report_type="qweb-pdf"
+        name="hotel_htm.report_hotel_transaction_invoice"
+        file="hotel_htm.report_hotel_transaction_invoice"
+        attachment_use="True"/>
+
+
+</odoo>

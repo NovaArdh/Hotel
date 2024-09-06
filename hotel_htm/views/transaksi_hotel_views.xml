@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data>
+    
+        <record id="transaksi_hotel_view_tree" model="ir.ui.view">
+            <field name="name">transaksi.hotel.view.tree</field>
+            <field name="model">transaksi.hotel</field>
+            <field name="arch" type="xml">
+                <tree string="Transaksi Hotel">
+                    <field name="partner_id" />
+                    <field name="kamar_id" />
+                    <field name="start_date" />
+                    <field name="end_date" />
+                    <field name="duration" />
+                    <field name="note" />
+                </tree>
+            </field>
+        </record>
+
+        <record id="transaksi_hotel_view_form" model="ir.ui.view">
+            <field name="name">transaksi.hotel.view.form</field>
+            <field name="model">transaksi.hotel</field>
+            <field name="arch" type="xml">
+                <form string="Transaksi Hotel">
+                    <header>
+                        <button string="Confirm" name="confirm_transaction" type="object" class="oe_highlight"/>
+                        <button string="Cancel" name="cancel_transaction" type="object" class="oe_highlight"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,active" readonly="1"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="partner_id" />
+                                <field name="kamar_id" />
+                            </group>
+                            <group>
+                                <field name="start_date" />
+                                <field name="end_date" />
+                                <field name="duration" />
+                            </group>
+                        </group>
+
+                        <notebook>
+                            <page string="Note">
+                                <field name="note" />
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_transaksi_hotel_calendar" model="ir.ui.view">
+            <field name="name">transaksi.hotel.calendar</field>
+            <field name="model">transaksi.hotel</field>
+            <field name="arch" type="xml">
+                <calendar string="Transaction Calendar" date_start="start_date" date_stop="end_date" color="state">
+                    <field name="partner_id"/>
+                    <field name="kamar_id"/>
+                    <field name="state"/>
+                </calendar>
+            </field>
+        </record>
+
+        <record id="transaksi_hotel_action" model="ir.actions.act_window">
+            <field name="name">Transaksi Hotel</field>
+            <field name="res_model">transaksi.hotel</field>
+            <field name="view_mode">tree,form,calendar</field>
+        </record>
+
+        <menuitem id="transaksi_sub_menu" name="Transaksi" parent="hotel_menu" />
+        <menuitem id="Transaksi_hotel_menu" name="Transaksi Hotel" action="transaksi_hotel_action" parent="transaksi_sub_menu" />
+    
+    </data>
+    
+
+</odoo>

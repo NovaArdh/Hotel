@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data>
+    
+        <record id="view_hotel_room_tree" model="ir.ui.view">
+            <field name="name">kamar.hotel.tree</field>
+            <field name="model">kamar.hotel</field>
+            <field name="arch" type="xml">
+                <tree string="Kamar Hotel">
+                    <field name="name" />
+                    <field name="floor" />
+                    <field name="length" />
+                    <field name="width" />
+                    <field name="area" />
+                    <field name="price_per_night" />
+                    <field name="facilities_ids" widget="many2many_tags"/>
+                    <field name="state" />
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_hotel_room_form" model="ir.ui.view">
+            <field name="name">kamar.hotel.form</field>
+            <field name="model">kamar.hotel</field>
+            <field name="arch" type="xml">
+                <form string="Kamar Hotel">
+                    <header>
+                        <field name="state" widget="statusbar" statusbar_visible="available,booked" readonly="1"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_title">
+                            <span class="o_form_label">Nama Kamar</span>
+                            <h1>
+                                <field name="name" />
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="floor" />
+                                <field name="length" />
+                                <field name="width" />
+                                <field name="area" />
+                            </group>
+                            <group>
+                                <field name="price_per_night" />
+                                <field name="facilities_ids" widget="many2many_tags"/>
+                            </group>
+                        </group>
+
+                        <notebook>
+                            <page string="Transaksi Booking">
+                                <field name="transaction_ids">
+                                    <tree>
+                                        <field name="partner_id" />
+                                        <field name="start_date" />
+                                        <field name="end_date" />
+                                        <field name="duration" />
+                                        <field name="note" />
+                                        <field name="state" />
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_kamar_hotel_kanban" model="ir.ui.view">
+            <field name="name">kamar.hotel.kanban</field>
+            <field name="model">kamar.hotel</field>
+            <field name="arch" type="xml">
+                <kanban class="o_kanban_small_column" default_group_by="state">
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div class="oe_kanban_card">
+                                <div class="o_kanban_image">
+                                    <field name="name"/>
+                                </div>
+                                <div class="o_kanban_details">
+                                    <strong><field name="name"/></strong>
+                                    <div><field name="floor"/></div>
+                                    <div><field name="state"/></div>
+                                    <div>Price: <field name="price_per_night"/> per Malam</div>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <record id="kamar_hotel_action" model="ir.actions.act_window">
+            <field name="name">Kamar Hotel</field>
+            <field name="res_model">kamar.hotel</field>
+            <field name="view_mode">tree,form,kanban</field>
+        </record>
+
+        <menuitem id="hotel_menu" name="Hotel"/>
+        <menuitem id="hotel_sub_menu" name="Hotel" parent="hotel_menu" />
+        <menuitem id="kamar_hotel_menu" name="Kamar Hotel" action="kamar_hotel_action" parent="hotel_sub_menu" />
+    
+    </data>
+    
+
+</odoo>
