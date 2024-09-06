@@ -32,7 +32,6 @@ class TransaksiHotel(models.Model):
     @api.constrains('kamar_id', 'start_date', 'end_date')
     def check_room_availability(self):
         for record in self:
-            # Cek apakah ada transaksi aktif yang bertabrakan dengan transaksi yang dibuat
             overlapping_transactions = self.env['transaksi.hotel'].search([
                 ('id', '!=', record.id),
                 ('kamar_id', '=', record.kamar_id.id),

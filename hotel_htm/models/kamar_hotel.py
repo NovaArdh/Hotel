@@ -25,14 +25,3 @@ class KamarHotel(models.Model):
         for room in self.search([]):
             transactions = room.transaction_ids.filtered(lambda t: t.state == 'active' and t.start_date <= today <= t.end_date)
             room.state = 'booked' if transactions else 'available'
-
-    # @api.model
-    # def create(self, vals):
-    #     record = super(KamarHotel, self).create(vals)
-    #     self.update_room_status()
-    #     return record
-
-    # def write(self, vals):
-    #     res = super(KamarHotel, self).write(vals)
-    #     self.update_room_status()
-    #     return res

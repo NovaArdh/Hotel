@@ -97,7 +97,7 @@
             <field name="view_mode">tree,form,kanban</field>
         </record>
 
-        <menuitem id="hotel_menu" name="Hotel"/>
+        <menuitem id="hotel_menu" name="Hotel" web_icon="hotel_htm,static/description/icon.png"/>
         <menuitem id="hotel_sub_menu" name="Hotel" parent="hotel_menu" />
         <menuitem id="kamar_hotel_menu" name="Kamar Hotel" action="kamar_hotel_action" parent="hotel_sub_menu" />
     
