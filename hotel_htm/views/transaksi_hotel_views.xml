@@ -24,7 +24,7 @@
             <field name="arch" type="xml">
                 <form string="Transaksi Hotel">
                     <header>
-                        <button string="Confirm" name="confirm_transaction" type="object" class="oe_highlight"/>
+                        <button string="Confirm" name="confirm_transaction" states="draft" type="object" class="oe_highlight"/>
                         <button string="Cancel" name="cancel_transaction" type="object" class="oe_highlight"/>
                         <field name="state" widget="statusbar" statusbar_visible="draft,active" readonly="1"/>
                     </header>
