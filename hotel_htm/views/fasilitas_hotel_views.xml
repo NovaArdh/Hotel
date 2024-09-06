@@ -2,6 +2,17 @@
 <odoo>
 
     <data>
+
+        <record id="view_fasilitas_hotel_search" model="ir.ui.view">
+            <field name="name">fasilitas.hotel.search</field>
+            <field name="model">fasilitas.hotel</field>
+            <field name="arch" type="xml">
+                <search string="Fasilitas Search">
+                    <field name="name" string="Facility Name"/>
+                    <field name="code" string="Code"/>
+                </search>
+            </field>
+        </record>
     
         <record id="view_hotel_facility_tree" model="ir.ui.view">
             <field name="name">fasilitas.hotel.tree</field>
